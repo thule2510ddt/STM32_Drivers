@@ -1,0 +1,6 @@
+#ifndef INC_STM32F411XX_GPIO_DRIVER_H_H_
+#define INC_STM32F411XX_GPIO_DRIVER_H_H_
+
+#include "stm32f411xx.h"
+
+#endif

@@ -1,0 +1,9 @@
+../drivers/Src/stm32f411xx_gpio_driver.c:11:6:HAL_GPIO_PeriClockControl	8
+../drivers/Src/stm32f411xx_gpio_driver.c:34:6:HAL_GPIO_Init	11
+../drivers/Src/stm32f411xx_gpio_driver.c:76:6:HAL_GPIO_DeInit	1
+../drivers/Src/stm32f411xx_gpio_driver.c:80:16:HAL_GPIO_ReadPin	1
+../drivers/Src/stm32f411xx_gpio_driver.c:83:6:HAL_GPIO_WritePin	2
+../drivers/Src/stm32f411xx_gpio_driver.c:91:6:HAL_GPIO_TogglePin	1
+../drivers/Src/stm32f411xx_gpio_driver.c:95:6:HAL_GPIO_IRQInterruptConfig	1
+../drivers/Src/stm32f411xx_gpio_driver.c:98:6:HAL_GPIO_IRQPriorityConfig	1
+../drivers/Src/stm32f411xx_gpio_driver.c:104:6:HAL_GPIO_IRQHandling	2

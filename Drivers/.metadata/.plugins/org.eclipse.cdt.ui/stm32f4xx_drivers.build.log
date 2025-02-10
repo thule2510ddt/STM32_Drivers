@@ -1,0 +1,19 @@
+00:58:41 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j16 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Bootloader_CAN_SPI_I2C_UART_GPIO/Drivers/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Bootloader_CAN_SPI_I2C_UART_GPIO/Drivers/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../drivers/Src/stm32f411xx_gpio_driver.c:9:10: fatal error: stm32f411xx_gpio_driver.h: No such file or directory
+    9 | #include "stm32f411xx_gpio_driver.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+../Src/main.c:19:10: fatal error: stm32f411xx.h: No such file or directory
+   19 | #include <stm32f411xx.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [drivers/Src/subdir.mk:19: drivers/Src/stm32f411xx_gpio_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+
+00:58:41 Build Failed. 5 errors, 0 warnings. (took 141ms)
+
