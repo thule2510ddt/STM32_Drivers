@@ -59,9 +59,9 @@ void HAL_GPIO_Init(GPIO_Handle_t *GPIOHandle){
 		uint8_t temp1 = PinNum/4;
 		uint8_t temp2 = PinNum%4;
 		uint8_t portcode = GPIO_BASEADDR_TO_CODE(GPIOHandle->GPIOx);
-//		SYSCFG->EXTICR[temp1] = portcode << ( temp2 * 4);
-//		EXTI->IMR |= 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber;
-//		SYSCFG_PCLK_EN();
+		SYSCFG->EXTICR[temp1] = portcode << ( temp2 * 4);
+		EXTI->EXTI_IMR |= 1 << GPIOHandle->GPIO_PinConfig.GPIO_PinNumber;
+		SYSCFG_PCLK_EN();
 
 	}
 	GPIOHandle->GPIOx->OTYPER &= (~(0x1  << PinNum));

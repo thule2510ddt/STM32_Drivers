@@ -18,10 +18,10 @@
 #define RESET			DISABLE
 #define NO_PR_BITS_IMPLEMENTED 4
 
-#define APB1_BaseAddress 		(volatile uint32_t*)0x40000000
-#define APB2_BaseAddress 		(volatile uint32_t*)0x40010000
-#define AHB1_BaseAddress 		(volatile uint32_t*)0x40020000
-#define AHB2_BaseAddress 		(volatile uint32_t*)0x50000000
+#define APB1_BASEADDR 		(volatile uint32_t*)0x40000000
+#define APB2_BASEADDR 		(volatile uint32_t*)0x40010000
+#define AHB1_BASEADDR 		(volatile uint32_t*)0x40020000
+#define AHB2_BASEADDR 		(volatile uint32_t*)0x50000000
 
 
 #define NVIC_ISER0 				(volatile uint32_t*)0xE000E100
@@ -32,25 +32,28 @@
 #define NVIC_IPR0 				(volatile uint32_t*)0xE000E400
 
 
-#define GPIOA_BaseAddress 		(AHB1_BaseAddress + 0x0000)
-#define GPIOB_BaseAddress 		(AHB1_BaseAddress + 0x0400)
-#define GPIOC_BaseAddress 		(AHB1_BaseAddress + 0x0800)
-#define GPIOD_BaseAddress 		(AHB1_BaseAddress + 0x0C00)
-#define GPIOE_BaseAddress 		(AHB1_BaseAddress + 0x1000)
-#define GPIOH_BaseAddress 		(AHB1_BaseAddress + 0x1C00)
+#define GPIOA_BASEADDR 		(AHB1_BASEADDR + 0x0000)
+#define GPIOB_BASEADDR 		(AHB1_BASEADDR + 0x0400)
+#define GPIOC_BASEADDR 		(AHB1_BASEADDR + 0x0800)
+#define GPIOD_BASEADDR 		(AHB1_BASEADDR + 0x0C00)
+#define GPIOE_BASEADDR 		(AHB1_BASEADDR + 0x1000)
+#define GPIOH_BASEADDR 		(AHB1_BASEADDR + 0x1C00)
 
-#define RCC_BaseAddress 		(AHB1_BaseAddress + 0x3800)
-#define EXTI_BaseAddress 		(APB2_BaseAddress + 0x3C00)
+#define RCC_BASEADDR 		(AHB1_BASEADDR + 0x3800)
+#define EXTI_BASEADDR 		(APB2_BASEADDR + 0x3C00)
+#define SYSCFG_BASEADDR        	(APB2_BASEADDR + 0x3800)
 
-#define GPIOA					((GPIO_TypeDef*)GPIOA_BaseAddress)
-#define GPIOB					((GPIO_TypeDef*)GPIOB_BaseAddress)
-#define GPIOC					((GPIO_TypeDef*)GPIOC_BaseAddress)
-#define GPIOD					((GPIO_TypeDef*)GPIOD_BaseAddress)
-#define GPIOE					((GPIO_TypeDef*)GPIOE_BaseAddress)
-#define GPIOH					((GPIO_TypeDef*)GPIOH_BaseAddress)
 
-#define EXTI					((EXTI_TypeDef*)EXTI_BaseAddress)
-#define RCC						((RCC_TypeDef*)RCC_BaseAddress)
+#define GPIOA					((GPIO_TypeDef*)GPIOA_BASEADDR)
+#define GPIOB					((GPIO_TypeDef*)GPIOB_BASEADDR)
+#define GPIOC					((GPIO_TypeDef*)GPIOC_BASEADDR)
+#define GPIOD					((GPIO_TypeDef*)GPIOD_BASEADDR)
+#define GPIOE					((GPIO_TypeDef*)GPIOE_BASEADDR)
+#define GPIOH					((GPIO_TypeDef*)GPIOH_BASEADDR)
+
+#define EXTI					((EXTI_TypeDef*)EXTI_BASEADDR)
+#define RCC						((RCC_TypeDef*)RCC_BASEADDR)
+#define SYSCFG					((SYSCFG_RegDef_t*)SYSCFG_BASEADDR)
 
 typedef struct {
 	volatile uint32_t MODER;
@@ -62,7 +65,7 @@ typedef struct {
 	volatile uint32_t BSRR;
 	volatile uint32_t LCKR;
 	volatile uint32_t AFR[2];
-}GPIO_TypeDef;
+} GPIO_TypeDef;
 
 typedef struct {
 	volatile uint32_t RCC_CR;
@@ -94,7 +97,7 @@ typedef struct {
 	volatile uint32_t RCC_PLLI2SCFGR;
 	volatile uint32_t Reserved7;
 	volatile uint32_t RCC_DCKCFGR;
-}RCC_TypeDef;
+} RCC_TypeDef;
 
 typedef struct {
 	volatile uint32_t EXTI_IMR;
@@ -103,7 +106,7 @@ typedef struct {
 	volatile uint32_t EXTI_FTSR;
 	volatile uint32_t EXTI_SWIER;
 	volatile uint32_t EXTI_PR;
-}EXTI_TypeDef;
+} EXTI_TypeDef;
 
 typedef struct
 {
