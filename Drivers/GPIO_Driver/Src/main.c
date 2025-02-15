@@ -24,28 +24,29 @@ int main(void){
 	LED_0.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_15;
 	LED_0.GPIO_PinConfig.GPIO_PinMode = GPIO_OUTPUT_MODE;
 	LED_0.GPIO_PinConfig.GPIO_PinOPType = 0;
-	HAL_GPIO_Init(&LED_0);
+	HAL_GPIO_PeriClockControl(GPIOD, ENABLE);
+	HAL_GPIO_Init(LED_0);
 
 	GPIO_Handle_t LED_1;
 	LED_1.GPIOx = GPIOD;
 	LED_1.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_14;
 	LED_1.GPIO_PinConfig.GPIO_PinMode = GPIO_OUTPUT_MODE;
 	LED_1.GPIO_PinConfig.GPIO_PinOPType = 0;
-	HAL_GPIO_Init(&LED_1);
+	HAL_GPIO_Init(LED_1);
 
 	GPIO_Handle_t LED_2;
 	LED_2.GPIOx = GPIOD;
 	LED_2.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_13;
 	LED_2.GPIO_PinConfig.GPIO_PinMode = GPIO_OUTPUT_MODE;
 	LED_2.GPIO_PinConfig.GPIO_PinOPType = 0;
-	HAL_GPIO_Init(&LED_2);
+	HAL_GPIO_Init(LED_2);
 
 	GPIO_Handle_t LED_3;
 	LED_3.GPIOx = GPIOD;
 	LED_3.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_12;
 	LED_3.GPIO_PinConfig.GPIO_PinMode = GPIO_OUTPUT_MODE;
 	LED_3.GPIO_PinConfig.GPIO_PinOPType = 0;
-	HAL_GPIO_Init(&LED_3);
+	HAL_GPIO_Init(LED_3);
 
 	// GPIO_Handle_t BTN;
 	// BTN.GPIOx = GPIOA;

@@ -17,19 +17,20 @@
 #define SET				ENABLE
 #define RESET			DISABLE
 #define NO_PR_BITS_IMPLEMENTED 4
+#define __vo volatile
 
-#define APB1_BASEADDR 		(volatile uint32_t*)0x40000000
-#define APB2_BASEADDR 		(volatile uint32_t*)0x40010000
-#define AHB1_BASEADDR 		(volatile uint32_t*)0x40020000
-#define AHB2_BASEADDR 		(volatile uint32_t*)0x50000000
+#define APB1_BASEADDR 		0x40000000
+#define APB2_BASEADDR 		0x40010000
+#define AHB1_BASEADDR 		0x40020000
+#define AHB2_BASEADDR 		0x50000000
 
 
-#define NVIC_ISER0 				(volatile uint32_t*)0xE000E100
-#define NVIC_ISER1 				(volatile uint32_t*)0xE000E104
-#define NVIC_ISER2 				(volatile uint32_t*)0xE000E108
-#define NVIC_ISER3 				(volatile uint32_t*)0xE000E10C
+#define NVIC_ISER0          ((__vo uint32_t*)0xE000E100 )
+#define NVIC_ISER1          ((__vo uint32_t*)0xE000E104 )
+#define NVIC_ISER2          ((__vo uint32_t*)0xE000E108 )
+#define NVIC_ISER3          ((__vo uint32_t*)0xE000E10C )
 
-#define NVIC_IPR0 				(volatile uint32_t*)0xE000E400
+#define NVIC_IPR0 		    ((__vo uint32_t*)0xE000E400)
 
 
 #define GPIOA_BASEADDR 		(AHB1_BASEADDR + 0x0000)

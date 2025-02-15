@@ -75,7 +75,7 @@ typedef struct {
 
 void			HAL_GPIO_PeriClockControl(GPIO_TypeDef *GPIOx, uint8_t EnorDi);
 
-void 			HAL_GPIO_Init(GPIO_Handle_t *GPIOHandle);
+void 			HAL_GPIO_Init(GPIO_Handle_t GPIOHandle);
 void 			HAL_GPIO_DeInit(GPIO_TypeDef *GPIOx);
 
 GPIO_PinState 	HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);

@@ -31,17 +31,17 @@ void HAL_GPIO_PeriClockControl(GPIO_TypeDef *GPIOx, uint8_t EnorDi){
 	}
 }
 
-void HAL_GPIO_Init(GPIO_Handle_t *GPIOHandle){
-	uint8_t PinMode = GPIOHandle->GPIO_PinConfig.GPIO_PinMode;
-	uint8_t PinNum = GPIOHandle->GPIO_PinConfig.GPIO_PinNumber;
-	uint8_t OPType = GPIOHandle->GPIO_PinConfig.GPIO_PinOPType;
-	uint8_t OSPEED = GPIOHandle->GPIO_PinConfig.GPIO_PinSpeed;
-	uint8_t PuPdControl = GPIOHandle->GPIO_PinConfig.GPIO_PinPuPdControl;
+void HAL_GPIO_Init(GPIO_Handle_t GPIOHandle){
+	uint8_t PinMode = GPIOHandle.GPIO_PinConfig.GPIO_PinMode;
+	uint8_t PinNum = GPIOHandle.GPIO_PinConfig.GPIO_PinNumber;
+	uint8_t OPType = GPIOHandle.GPIO_PinConfig.GPIO_PinOPType;
+	uint8_t OSPEED = GPIOHandle.GPIO_PinConfig.GPIO_PinSpeed;
+	uint8_t PuPdControl = GPIOHandle.GPIO_PinConfig.GPIO_PinPuPdControl;
 
-	HAL_GPIO_PeriClockControl(GPIOHandle->GPIOx, ENABLE);
+	HAL_GPIO_PeriClockControl(GPIOHandle.GPIOx, ENABLE);
 	if (PinMode <= GPIO_ANALOG_MODE){
-		GPIOHandle->GPIOx->MODER &= (~(0x3 << (PinNum*2)));
-		GPIOHandle->GPIOx->MODER |= (PinMode << (PinNum*2));
+		GPIOHandle.GPIOx->MODER &= (~(0x3 << (PinNum*2)));
+		GPIOHandle.GPIOx->MODER |= (PinMode << (PinNum*2));
 	}
 	else{
 		if(PinMode == GPIO_INTERRUPT_RT){
@@ -58,20 +58,20 @@ void HAL_GPIO_Init(GPIO_Handle_t *GPIOHandle){
 		}
 		uint8_t temp1 = PinNum/4;
 		uint8_t temp2 = PinNum%4;
-		uint8_t portcode = GPIO_BASEADDR_TO_CODE(GPIOHandle->GPIOx);
+		uint8_t portcode = GPIO_BASEADDR_TO_CODE(GPIOHandle.GPIOx);
 		SYSCFG->EXTICR[temp1] = portcode << ( temp2 * 4);
-		EXTI->EXTI_IMR |= 1 << GPIOHandle->GPIO_PinConfig.GPIO_PinNumber;
+		EXTI->EXTI_IMR |= 1 << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber;
 		SYSCFG_PCLK_EN();
 
 	}
-	GPIOHandle->GPIOx->OTYPER &= (~(0x1  << PinNum));
-	GPIOHandle->GPIOx->OTYPER |= (OPType << PinNum);
+	GPIOHandle.GPIOx->OTYPER &= (~(0x1  << PinNum));
+	GPIOHandle.GPIOx->OTYPER |= (OPType << PinNum);
 
-	GPIOHandle->GPIOx->OSPEED &= (~(0x3  << (PinNum*2)));
-	GPIOHandle->GPIOx->OSPEED |= (OSPEED << (PinNum*2));
+	GPIOHandle.GPIOx->OSPEED &= (~(0x3  << (PinNum*2)));
+	GPIOHandle.GPIOx->OSPEED |= (OSPEED << (PinNum*2));
 
-	GPIOHandle->GPIOx->PUPDR  &= (~(0x3  << (PinNum*2)));
-	GPIOHandle->GPIOx->PUPDR  |= (PuPdControl << (PinNum*2));
+	GPIOHandle.GPIOx->PUPDR  &= (~(0x3  << (PinNum*2)));
+	GPIOHandle.GPIOx->PUPDR  |= (PuPdControl << (PinNum*2));
 }
 void HAL_GPIO_DeInit(GPIO_TypeDef *GPIOx){
 	// NOT IMPLEMENT YET
