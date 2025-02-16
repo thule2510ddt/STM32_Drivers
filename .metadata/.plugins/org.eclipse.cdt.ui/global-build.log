@@ -399,3 +399,40 @@ arm-none-eabi-size  stm32_drivers.elf
    1688	      0	   1568	   3256	    cb8	stm32_drivers.elf
 Finished building: default.size.stdout
  
+23:47:23 **** Incremental Build of configuration Debug for project stm32_drivers ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'GPIOD_Configure':
+../Src/main.c:55:23: error: incompatible type for argument 1 of 'HAL_GPIO_Init'
+   55 |         HAL_GPIO_Init(&BTN);
+      |                       ^~~~
+      |                       |
+      |                       GPIO_Handle_t *
+In file included from H:/STM32_Drivers/stm32_drivers/drivers/Inc/stm32f411xx.h:147,
+                 from ../Src/main.c:19:
+H:/STM32_Drivers/stm32_drivers/drivers/Inc/stm32f411xx_gpio_driver.h:78:53: note: expected 'GPIO_Handle_t' but argument is of type 'GPIO_Handle_t *'
+   78 | void                    HAL_GPIO_Init(GPIO_Handle_t GPIOHandle);
+      |                                       ~~~~~~~~~~~~~~^~~~~~~~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:47:34 **** Incremental Build of configuration Debug for project stm32_drivers ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "stm32_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\stm32_drivers\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_drivers.elf
+ 
+arm-none-eabi-size  stm32_drivers.elf 
+arm-none-eabi-objdump -h -S stm32_drivers.elf  > "stm32_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_drivers.list
+ 
+23:47:38 **** Incremental Build of configuration Debug for project stm32_drivers ****
+make -j16 all 
+arm-none-eabi-size  stm32_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
+Finished building: default.size.stdout
+ 
