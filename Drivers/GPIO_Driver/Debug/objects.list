@@ -1,4 +1,7 @@
-"./Src/main.o"
+"./Src/1_Led_Toggle.o"
+"./Src/2_Led_Button.o"
+"./Src/3_Led_Button_EXTI.o"
+"./Src/4_GPIO_Freq.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32f411vetx.o"
