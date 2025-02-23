@@ -1,21 +1,39 @@
-00:53:35 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+02:12:24 **** Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
 arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f411vetx.d" -MT"Startup/startup_stm32f411vetx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f411vetx.o" "../Startup/startup_stm32f411vetx.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: GPIO_Driver.elf
- 
-arm-none-eabi-size  GPIO_Driver.elf 
-arm-none-eabi-objdump -h -S GPIO_Driver.elf  > "GPIO_Driver.list"
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-Finished building: GPIO_Driver.list
- 
+arm-none-eabi-gcc "../Src/1_Led_Toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/1_Led_Toggle.d" -MT"Src/1_Led_Toggle.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/1_Led_Toggle.o"
+../Src/1_Led_Toggle.c: In function 'main':
+../Src/1_Led_Toggle.c:22:6: error: unknown type name 'GPIO_Handle_t'
+   22 |      GPIO_Handle_t LED_0;
+      |      ^~~~~~~~~~~~~
+../Src/1_Led_Toggle.c:23:11: error: request for member 'GPIOx' in something not a structure or union
+   23 |      LED_0.GPIOx = GPIOD;
+      |           ^
+../Src/1_Led_Toggle.c:24:11: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   24 |      LED_0.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_15;
+      |           ^
+../Src/1_Led_Toggle.c:24:44: error: 'GPIO_PIN_15' undeclared (first use in this function)
+   24 |      LED_0.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_15;
+      |                                            ^~~~~~~~~~~
+../Src/1_Led_Toggle.c:24:44: note: each undeclared identifier is reported only once for each function it appears in
+../Src/1_Led_Toggle.c:25:11: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   25 |      LED_0.GPIO_PinConfig.GPIO_PinMode = GPIO_OUTPUT_MODE;
+      |           ^
+../Src/1_Led_Toggle.c:25:42: error: 'GPIO_OUTPUT_MODE' undeclared (first use in this function)
+   25 |      LED_0.GPIO_PinConfig.GPIO_PinMode = GPIO_OUTPUT_MODE;
+      |                                          ^~~~~~~~~~~~~~~~
+../Src/1_Led_Toggle.c:26:11: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   26 |      LED_0.GPIO_PinConfig.GPIO_PinOPType = 0;
+      |           ^
+../Src/1_Led_Toggle.c:28:6: warning: implicit declaration of function 'HAL_GPIO_Init' [-Wimplicit-function-declaration]
+   28 |      HAL_GPIO_Init(LED_0);
+      |      ^~~~~~~~~~~~~
+../Src/1_Led_Toggle.c:31:10: warning: implicit declaration of function 'HAL_GPIO_TogglePin' [-Wimplicit-function-declaration]
+   31 |          HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
+      |          ^~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:34: Src/1_Led_Toggle.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
 
-00:53:37 Build Finished. 0 errors, 0 warnings. (took 1s.753ms)
+02:12:25 Build Failed. 9 errors, 2 warnings. (took 1s.298ms)
 

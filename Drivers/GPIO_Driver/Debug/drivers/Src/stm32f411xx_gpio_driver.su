@@ -1,4 +1,0 @@
-../drivers/Src/stm32f411xx_gpio_driver.c:11:6:HAL_GPIO_PeriClockControl	16	static
-../drivers/Src/stm32f411xx_gpio_driver.c:34:6:HAL_GPIO_Init	32	static
-../drivers/Src/stm32f411xx_gpio_driver.c:78:6:HAL_GPIO_WritePin	16	static
-../drivers/Src/stm32f411xx_gpio_driver.c:87:6:HAL_GPIO_TogglePin	16	static

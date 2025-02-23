@@ -16,7 +16,9 @@
  ******************************************************************************
  */
 
- #include "stm32f411xx.h"
+#include<stddef.h>
+#include<stdint.h>
+#include<stdbool.h>
 
  int main(void){
      GPIO_Handle_t LED_0;
