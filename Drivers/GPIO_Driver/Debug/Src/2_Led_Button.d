@@ -1,1 +1,1 @@
-Src/2_Led_Button.o: ../Src/2_Led_Button.c
+Src/2_LED_Button.o: ../Src/2_LED_Button.c
