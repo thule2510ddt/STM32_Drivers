@@ -1,0 +1,249 @@
+/*
+ * 3_Button_EXTI.c
+ *
+ *  Created on: Feb 26, 2025
+ *      Author: lmthu
+ */
+
+ #include<stddef.h>
+#include<stdint.h>
+#include<stdbool.h>
+
+#define ENABLE 			1
+#define DISABLE 		0
+#define GPIO_PIN_SET 			ENABLE
+#define GPIO_PIN_RESET 			DISABLE
+#define AHB1_BASEADDR   0x40020000U
+#define APB2_BASEADDR   0x40010000U
+#define RCC_BASEADDR    0x40023800U
+#define EXTI 			APB2_BASEADDR + 0x3C00U
+
+#define GPIOA_BASEADDR  (AHB1_BASEADDR + 0x0000U)
+#define GPIOB_BASEADDR  (AHB1_BASEADDR + 0x0400U)
+#define GPIOC_BASEADDR  (AHB1_BASEADDR + 0x0800U)
+#define GPIOD_BASEADDR  (AHB1_BASEADDR + 0x0C00U)
+#define GPIOE_BASEADDR  (AHB1_BASEADDR + 0x0800U)
+#define GPIOH_BASEADDR  (AHB1_BASEADDR + 0x0C00U)
+
+/* --------------------------> RCC Peripheral -------------------------------> */
+typedef struct {
+    volatile uint32_t RCC_CR;
+    volatile uint32_t RCC_PLLCFGR;
+    volatile uint32_t RCC_CFGR;
+    volatile uint32_t RCC_CIR;
+    volatile uint32_t RCC_AHB1RSTR;
+    volatile uint32_t RCC_AHB2RSTR;
+    volatile uint32_t Reserved0[2];
+    volatile uint32_t RCC_APB1RSTR;
+    volatile uint32_t RCC_APB2RSTR;
+    volatile uint32_t Reserved1[2];
+    volatile uint32_t RCC_AHB1ENR;
+    volatile uint32_t RCC_AHB2ENR;
+    volatile uint32_t Reserved2[2];
+    volatile uint32_t RCC_APB1ENR;
+    volatile uint32_t RCC_APB2ENR;
+    volatile uint32_t Reserved3[2];
+    volatile uint32_t RCC_AHB1LPENR;
+    volatile uint32_t RCC_AHB2LPENR;
+    volatile uint32_t Reserved4[2];
+    volatile uint32_t RCC_APB1LPENR;
+    volatile uint32_t RCC_APB2LPENR;
+    volatile uint32_t Reserved5[2];
+    volatile uint32_t RCC_BDCR;
+    volatile uint32_t RCC_CSR;
+    volatile uint32_t Reserved6[2];
+    volatile uint32_t RCC_SSCGR;
+    volatile uint32_t RCC_PLLI2SCFGR;
+    volatile uint32_t Reserved7;
+    volatile uint32_t RCC_DCKCFGR;
+} RCC_TypeDef;
+
+#define RCC ((RCC_TypeDef*)RCC_BASEADDR)
+/* <-------------------------- RCC Peripheral <------------------------------- */
+
+/* --------------------------> EXTI Peripheral -------------------------------> */
+typedef struct {
+    volatile uint32_t EXTI_IMR;
+    volatile uint32_t EXTI_EMR;
+    volatile uint32_t EXTI_RTSR;
+    volatile uint32_t EXTI_FTSR;
+    volatile uint32_t EXTI_SWIER;
+    volatile uint32_t EXTI_PR;
+} EXTI_TypeDef;
+
+#define EXTI ((EXTI_TypeDef*)(APB2_BASEADDR + 0x3C00U))
+
+/* <-------------------------- EXTI Peripheral <------------------------------- */
+
+/* --------------------------> GPIO Peripheral -------------------------------> */
+typedef struct {
+	volatile uint32_t MODER;
+	volatile uint32_t OTYPER;
+	volatile uint32_t OSPEED;
+	volatile uint32_t PUPDR;
+	volatile uint32_t IDR;
+	volatile uint32_t ODR;
+	volatile uint32_t BSRR;
+	volatile uint32_t LCKR;
+	volatile uint32_t AFR[2];
+} GPIO_TypeDef;
+
+typedef struct {
+	uint8_t GPIO_PinNumber;
+	uint8_t GPIO_PinMode;
+	uint8_t GPIO_PinSpeed;
+	uint8_t GPIO_PinPuPdControl;
+	uint8_t GPIO_PinOPType;
+	uint8_t GPIO_PinAltFunMode;
+} GPIO_PinConfig_t;
+
+typedef struct {
+    GPIO_TypeDef *GPIOx;
+    GPIO_PinConfig_t GPIO_PinConfig;
+} GPIO_Handle_t;
+
+#define GPIOA	((GPIO_TypeDef*)GPIOA_BASEADDR)
+#define GPIOB	((GPIO_TypeDef*)GPIOB_BASEADDR)
+#define GPIOC	((GPIO_TypeDef*)GPIOC_BASEADDR)
+#define GPIOD	((GPIO_TypeDef*)GPIOD_BASEADDR)
+#define GPIOE	((GPIO_TypeDef*)GPIOE_BASEADDR)
+#define GPIOH	((GPIO_TypeDef*)GPIOH_BASEADDR)
+
+#define GPIO_PIN_15 15U
+#define GPIO_PIN_14 14U
+#define GPIO_PIN_13 13U
+#define GPIO_PIN_12 12U
+#define GPIO_PIN_11 11U
+#define GPIO_PIN_10 10U
+#define GPIO_PIN_9  9U
+#define GPIO_PIN_8  8U
+#define GPIO_PIN_7  7U
+#define GPIO_PIN_6  6U
+#define GPIO_PIN_5  5U
+#define GPIO_PIN_4  4U
+#define GPIO_PIN_3  3U
+#define GPIO_PIN_2  2U
+#define GPIO_PIN_1  1U
+#define GPIO_PIN_0  0U
+
+
+#define GPIO_INPUT_MODE         0U
+#define GPIO_OUTPUT_MODE        1U
+#define GPIO_ALTFN_MODE         2U
+#define GPIO_ANALOG_MODE        3U
+#define GPIO_INTERRUPT_RT       4U
+#define GPIO_INTERRUPT_FT       5U
+#define GPIO_INTERRUPT_RFT      6U
+
+#define GPIO_OP_TYPE_PP				0
+#define GPIO_OP_TYPE_OD				1
+
+#define GPIOA_PCLK_EN()			(RCC->RCC_AHB1ENR |= (1 << 0))
+#define GPIOB_PCLK_EN()			(RCC->RCC_AHB1ENR |= (1 << 1))
+#define GPIOC_PCLK_EN()			(RCC->RCC_AHB1ENR |= (1 << 2))
+#define GPIOD_PCLK_EN()			(RCC->RCC_AHB1ENR |= (1 << 3))
+#define GPIOE_PCLK_EN()			(RCC->RCC_AHB1ENR |= (1 << 4))
+#define GPIOH_PCLK_EN()			(RCC->RCC_AHB1ENR |= (1 << 7))
+
+void HAL_GPIO_Init(GPIO_Handle_t GPIOHandle){
+    if(GPIOHandle.GPIO_PinConfig.GPIO_PinMode <= GPIO_ANALOG_MODE){
+        GPIOHandle.GPIOx->MODER &= ~(0x3U << (GPIOHandle.GPIO_PinConfig.GPIO_PinNumber * 2U));
+        GPIOHandle.GPIOx->MODER |= (GPIOHandle.GPIO_PinConfig.GPIO_PinMode << (GPIOHandle.GPIO_PinConfig.GPIO_PinNumber * 2U));
+    }
+    else{
+        if(GPIOHandle.GPIO_PinConfig.GPIO_PinMode == GPIO_INTERRUPT_RT){
+            EXTI->EXTI_RTSR |= (1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+            EXTI->EXTI_IMR |= (1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+        }
+        else if(GPIOHandle.GPIO_PinConfig.GPIO_PinMode == GPIO_INTERRUPT_FT){
+            EXTI->EXTI_FTSR |= (1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+            EXTI->EXTI_IMR |= (1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+        }
+        else if(GPIOHandle.GPIO_PinConfig.GPIO_PinMode == GPIO_INTERRUPT_RFT){
+            EXTI->EXTI_RTSR |= (1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+            EXTI->EXTI_FTSR |= (1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+            EXTI->EXTI_IMR |= (1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+        }
+    }
+    GPIOHandle.GPIOx->OTYPER &= ~(0x1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+    GPIOHandle.GPIOx->OTYPER |= (GPIOHandle.GPIO_PinConfig.GPIO_PinOPType << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+    GPIOHandle.GPIOx->OSPEED &= ~(0x3U << (GPIOHandle.GPIO_PinConfig.GPIO_PinNumber * 2U));
+    GPIOHandle.GPIOx->OSPEED |= (GPIOHandle.GPIO_PinConfig.GPIO_PinSpeed << (GPIOHandle.GPIO_PinConfig.GPIO_PinNumber * 2U));
+    GPIOHandle.GPIOx->PUPDR &= ~(0x3U << (GPIOHandle.GPIO_PinConfig.GPIO_PinNumber * 2U));
+    GPIOHandle.GPIOx->PUPDR |= (GPIOHandle.GPIO_PinConfig.GPIO_PinPuPdControl << (GPIOHandle.GPIO_PinConfig.GPIO_PinNumber * 2U));
+}
+
+void HAL_GPIO_TogglePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin){
+    GPIOx->ODR ^= (1U << GPIO_Pin);
+}
+
+void HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, bool GPIO_Pin_State){
+	if(GPIO_Pin_State == GPIO_PIN_SET){
+		GPIOx->ODR |= (1 << GPIO_Pin);
+	}
+	else if(GPIO_Pin_State == GPIO_PIN_RESET){
+		GPIOx->ODR &= (~(1 << GPIO_Pin));
+	}
+}
+
+uint16_t HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin){
+	bool value;
+	value = ((GPIOx->IDR) >> GPIO_Pin) & 0x1;
+	return value;
+}
+
+void HAL_GPIO_PeriClockControl(GPIO_TypeDef *GPIOx, uint8_t EnorDi){
+    if(EnorDi){
+        if(GPIOx == GPIOA){
+        	GPIOA_PCLK_EN();
+        }
+        else if(GPIOx == GPIOB){
+        	GPIOB_PCLK_EN();
+        }
+        else if(GPIOx == GPIOC){
+        	GPIOC_PCLK_EN();
+        }
+        else if(GPIOx == GPIOD){
+            GPIOD_PCLK_EN();
+        }
+        else if(GPIOx == GPIOE){
+        	GPIOE_PCLK_EN();
+        }
+        else if(GPIOx == GPIOH){
+        	GPIOH_PCLK_EN();
+        }
+    }
+}
+
+/* <-------------------------- GPIO Peripheral <------------------------------- */
+
+
+
+
+int main(void){
+    GPIO_Handle_t LED_0;
+    LED_0.GPIOx = GPIOD;
+    LED_0.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_12;
+    LED_0.GPIO_PinConfig.GPIO_PinMode = GPIO_OUTPUT_MODE;
+    LED_0.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
+
+    GPIO_Handle_t Button;
+    Button.GPIOx = GPIOA;
+    Button.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_0;
+    Button.GPIO_PinConfig.GPIO_PinMode = GPIO_INPUT_MODE;
+
+    HAL_GPIO_PeriClockControl(GPIOD, ENABLE);
+    HAL_GPIO_PeriClockControl(GPIOA, ENABLE);
+
+    HAL_GPIO_Init(LED_0);
+    HAL_GPIO_Init(Button);
+
+    while(true){
+    	if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0)){
+			HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+            for(int i = 0; i < 500000; i++){}
+    	}
+    }
+    return 0;
+}
+

@@ -1,698 +1,332 @@
-03:33:33 **** Clean-only build of configuration Debug for project GPIO_Driver ****
+03:24:11 **** Clean-only build of configuration Debug for project GPIO_Driver ****
 make -j16 clean 
-rm -rf ./drivers/Src/stm32f411xx_gpio_driver.cyclo ./drivers/Src/stm32f411xx_gpio_driver.d ./drivers/Src/stm32f411xx_gpio_driver.o ./drivers/Src/stm32f411xx_gpio_driver.su
 rm -rf ./Startup/startup_stm32f411vetx.d ./Startup/startup_stm32f411vetx.o
-rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf ./Src/2_Button_Toggle_LED.cyclo ./Src/2_Button_Toggle_LED.d ./Src/2_Button_Toggle_LED.o ./Src/2_Button_Toggle_LED.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
 rm -rf GPIO_Driver.elf GPIO_Driver.list GPIO_Driver.map default.size.stdout
  
-03:33:35 **** Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f411vetx.d" -MT"Startup/startup_stm32f411vetx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f411vetx.o" "../Startup/startup_stm32f411vetx.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
-../drivers/Src/stm32f411xx_gpio_driver.c: In function 'HAL_GPIO_Init':
-../drivers/Src/stm32f411xx_gpio_driver.c:62:17: error: 'SYSCFG' undeclared (first use in this function)
-   62 |                 SYSCFG->EXTICR[temp1] = portcode << ( temp2 * 4);
-      |                 ^~~~~~
-../drivers/Src/stm32f411xx_gpio_driver.c:62:17: note: each undeclared identifier is reported only once for each function it appears in
-../drivers/Src/stm32f411xx_gpio_driver.c:63:21: error: 'EXTI_TypeDef' has no member named 'IMR'
-   63 |                 EXTI->IMR |= 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber;
-      |                     ^~
-../drivers/Src/stm32f411xx_gpio_driver.c:63:35: error: 'pGPIOHandle' undeclared (first use in this function); did you mean 'GPIOHandle'?
-   63 |                 EXTI->IMR |= 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber;
-      |                                   ^~~~~~~~~~~
-      |                                   GPIOHandle
-../drivers/Src/stm32f411xx_gpio_driver.c:59:25: warning: variable 'temp1' set but not used [-Wunused-but-set-variable]
-   59 |                 uint8_t temp1 = PinNum/4;
-      |                         ^~~~~
-../drivers/Src/stm32f411xx_gpio_driver.c: In function 'printMessage':
-../drivers/Src/stm32f411xx_gpio_driver.c:110:9: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-  110 |         printf("he he\n");
-      |         ^~~~~~
-../drivers/Src/stm32f411xx_gpio_driver.c:10:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-    9 | #include "stm32f411xx_gpio_driver.h"
-  +++ |+#include <stdio.h>
-   10 | 
-../drivers/Src/stm32f411xx_gpio_driver.c:110:9: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
-  110 |         printf("he he\n");
-      |         ^~~~~~
-../drivers/Src/stm32f411xx_gpio_driver.c:110:9: note: include '<stdio.h>' or provide a declaration of 'printf'
-../drivers/Src/stm32f411xx_gpio_driver.c: In function 'HAL_GPIO_ReadPin':
-../drivers/Src/stm32f411xx_gpio_driver.c:82:1: warning: control reaches end of non-void function [-Wreturn-type]
-   82 | }
-      | ^
-make: *** [drivers/Src/subdir.mk:19: drivers/Src/stm32f411xx_gpio_driver.o] Error 1
-make: *** Waiting for unfinished jobs....
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
-03:34:31 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-../drivers/Src/stm32f411xx_gpio_driver.c: In function 'HAL_GPIO_ReadPin':
-../drivers/Src/stm32f411xx_gpio_driver.c:82:1: warning: control reaches end of non-void function [-Wreturn-type]
-   82 | }
-      | ^
-../Src/main.c: In function 'main':
-../Src/main.c:22:9: warning: implicit declaration of function 'printMessage' [-Wimplicit-function-declaration]
-   22 |         printMessage();
-      |         ^~~~~~~~~~~~
-arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
-H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/main.c:22: undefined reference to `printMessage'
-collect2.exe: error: ld returned 1 exit status
-make: *** [makefile:64: GPIO_Driver.elf] Error 1
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
-03:34:42 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: GPIO_Driver.elf
- 
-arm-none-eabi-size  GPIO_Driver.elf 
-arm-none-eabi-objdump -h -S GPIO_Driver.elf  > "GPIO_Driver.list"
-   text	   data	    bss	    dec	    hex	filename
-    676	      0	   1568	   2244	    8c4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-Finished building: GPIO_Driver.list
- 
-03:34:56 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-../drivers/Src/stm32f411xx_gpio_driver.c: In function 'HAL_GPIO_Init':
-../drivers/Src/stm32f411xx_gpio_driver.c:62:17: error: 'SYSCFG' undeclared (first use in this function)
-   62 |                 SYSCFG->EXTICR[temp1] = portcode << ( temp2 * 4);
-      |                 ^~~~~~
-../drivers/Src/stm32f411xx_gpio_driver.c:62:17: note: each undeclared identifier is reported only once for each function it appears in
-../drivers/Src/stm32f411xx_gpio_driver.c:63:21: error: 'EXTI_TypeDef' has no member named 'IMR'
-   63 |                 EXTI->IMR |= 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber;
-      |                     ^~
-../drivers/Src/stm32f411xx_gpio_driver.c:63:35: error: 'pGPIOHandle' undeclared (first use in this function); did you mean 'GPIOHandle'?
-   63 |                 EXTI->IMR |= 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber;
-      |                                   ^~~~~~~~~~~
-      |                                   GPIOHandle
-../drivers/Src/stm32f411xx_gpio_driver.c:59:25: warning: variable 'temp1' set but not used [-Wunused-but-set-variable]
-   59 |                 uint8_t temp1 = PinNum/4;
-      |                         ^~~~~
-../drivers/Src/stm32f411xx_gpio_driver.c: In function 'HAL_GPIO_ReadPin':
-../drivers/Src/stm32f411xx_gpio_driver.c:82:1: warning: control reaches end of non-void function [-Wreturn-type]
-   82 | }
-      | ^
-make: *** [drivers/Src/subdir.mk:19: drivers/Src/stm32f411xx_gpio_driver.o] Error 1
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
-03:35:20 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-../drivers/Src/stm32f411xx_gpio_driver.c: In function 'HAL_GPIO_Init':
-../drivers/Src/stm32f411xx_gpio_driver.c:61:25: warning: unused variable 'portcode' [-Wunused-variable]
-   61 |                 uint8_t portcode = GPIO_BASEADDR_TO_CODE(GPIOHandle->GPIOx);
-      |                         ^~~~~~~~
-../drivers/Src/stm32f411xx_gpio_driver.c:60:25: warning: unused variable 'temp2' [-Wunused-variable]
-   60 |                 uint8_t temp2 = PinNum%4;
-      |                         ^~~~~
-../drivers/Src/stm32f411xx_gpio_driver.c:59:25: warning: unused variable 'temp1' [-Wunused-variable]
-   59 |                 uint8_t temp1 = PinNum/4;
-      |                         ^~~~~
-../drivers/Src/stm32f411xx_gpio_driver.c: In function 'HAL_GPIO_ReadPin':
-../drivers/Src/stm32f411xx_gpio_driver.c:82:1: warning: control reaches end of non-void function [-Wreturn-type]
-   82 | }
-      | ^
-arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: GPIO_Driver.elf
- 
-arm-none-eabi-size  GPIO_Driver.elf 
-arm-none-eabi-objdump -h -S GPIO_Driver.elf  > "GPIO_Driver.list"
-   text	   data	    bss	    dec	    hex	filename
-    676	      0	   1568	   2244	    8c4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-Finished building: GPIO_Driver.list
- 
-22:21:45 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f411vetx.d" -MT"Startup/startup_stm32f411vetx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f411vetx.o" "../Startup/startup_stm32f411vetx.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: GPIO_Driver.elf
- 
-arm-none-eabi-size  GPIO_Driver.elf 
-arm-none-eabi-objdump -h -S GPIO_Driver.elf  > "GPIO_Driver.list"
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-Finished building: GPIO_Driver.list
- 
-19:42:24 **** Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-20:48:39 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-20:48:39 **** Build of configuration Debug for project SPI_Driver ****
-make -j16 all 
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f411vetx.d" -MT"Startup/startup_stm32f411vetx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f411vetx.o" "../Startup/startup_stm32f411vetx.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
-../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
-   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-      |    ^~~~~~~
-arm-none-eabi-gcc -o "SPI_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\SPI_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SPI_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: SPI_Driver.elf
- 
-arm-none-eabi-size  SPI_Driver.elf 
-arm-none-eabi-objdump -h -S SPI_Driver.elf  > "SPI_Driver.list"
-   text	   data	    bss	    dec	    hex	filename
-    668	      0	   1568	   2236	    8bc	SPI_Driver.elf
-Finished building: default.size.stdout
- 
-Finished building: SPI_Driver.list
- 
-21:07:17 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-21:07:17 **** Incremental Build of configuration Debug for project SPI_Driver ****
-make -j16 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
-   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-      |    ^~~~~~~
-arm-none-eabi-gcc -o "SPI_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\SPI_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SPI_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: SPI_Driver.elf
- 
-arm-none-eabi-size  SPI_Driver.elf 
-arm-none-eabi-objdump -h -S SPI_Driver.elf  > "SPI_Driver.list"
-   text	   data	    bss	    dec	    hex	filename
-    668	      0	   1568	   2236	    8bc	SPI_Driver.elf
-Finished building: default.size.stdout
- 
-Finished building: SPI_Driver.list
- 
-21:07:23 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-21:07:23 **** Incremental Build of configuration Debug for project SPI_Driver ****
-make -j16 all 
-arm-none-eabi-size  SPI_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-    668	      0	   1568	   2236	    8bc	SPI_Driver.elf
-Finished building: default.size.stdout
- 
-21:08:56 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-21:08:56 **** Incremental Build of configuration Debug for project SPI_Driver ****
-make -j16 all 
-arm-none-eabi-size  SPI_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-    668	      0	   1568	   2236	    8bc	SPI_Driver.elf
-Finished building: default.size.stdout
- 
-21:09:01 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-21:09:04 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-21:09:04 **** Incremental Build of configuration Debug for project SPI_Driver ****
-make -j16 all 
-arm-none-eabi-size  SPI_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-    668	      0	   1568	   2236	    8bc	SPI_Driver.elf
-Finished building: default.size.stdout
- 
-21:09:14 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-21:09:14 **** Incremental Build of configuration Debug for project SPI_Driver ****
-make -j16 all 
-arm-none-eabi-size  SPI_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-    668	      0	   1568	   2236	    8bc	SPI_Driver.elf
-Finished building: default.size.stdout
- 
-21:09:26 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-21:16:56 **** Incremental Build of configuration Debug for project SPI_Driver ****
-make -j16 all 
-arm-none-eabi-size  SPI_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-    668	      0	   1568	   2236	    8bc	SPI_Driver.elf
-Finished building: default.size.stdout
- 
-21:27:03 **** Build of configuration Debug for project stm32_drivers ****
+18:51:20 **** Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
 arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f411vetx.d" -MT"Startup/startup_stm32f411vetx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f411vetx.o" "../Startup/startup_stm32f411vetx.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
 arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
 arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
-../Src/main.c:19:10: fatal error: stm32f411xx.h: No such file or directory
-   19 | #include "stm32f411xx.h"
-      |          ^~~~~~~~~~~~~~~
-compilation terminated.
-make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+../Src/3_Button_EXTI.c: In function 'HAL_GPIO_Init':
+../Src/3_Button_EXTI.c:72:31: error: 'APB2_BASEADDR' undeclared (first use in this function); did you mean 'AHB1_BASEADDR'?
+   72 | #define EXTI ((EXTI_TypeDef*)(APB2_BASEADDR + 0x3C00U))
+      |                               ^~~~~~~~~~~~~
+../Src/3_Button_EXTI.c:153:13: note: in expansion of macro 'EXTI'
+  153 |             EXTI->EXTI_RTSR |= (1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+      |             ^~~~
+../Src/3_Button_EXTI.c:72:31: note: each undeclared identifier is reported only once for each function it appears in
+   72 | #define EXTI ((EXTI_TypeDef*)(APB2_BASEADDR + 0x3C00U))
+      |                               ^~~~~~~~~~~~~
+../Src/3_Button_EXTI.c:153:13: note: in expansion of macro 'EXTI'
+  153 |             EXTI->EXTI_RTSR |= (1U << GPIOHandle.GPIO_PinConfig.GPIO_PinNumber);
+      |             ^~~~
+make: *** [Src/subdir.mk:25: Src/3_Button_EXTI.o] Error 1
 make: *** Waiting for unfinished jobs....
 "make -j16 all" terminated with exit code 2. Build might be incomplete.
-22:32:51 **** Incremental Build of configuration Debug for project stm32_drivers ****
-make -j16 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc -o "stm32_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\stm32_drivers\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
-H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:27: undefined reference to `HAL_GPIO_PeriClockControl'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:28: undefined reference to `HAL_GPIO_Init'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:35: undefined reference to `HAL_GPIO_Init'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:42: undefined reference to `HAL_GPIO_Init'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:49: undefined reference to `HAL_GPIO_Init'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:58: undefined reference to `HAL_GPIO_WritePin'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:59: undefined reference to `HAL_GPIO_WritePin'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:60: undefined reference to `HAL_GPIO_WritePin'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:61: undefined reference to `HAL_GPIO_WritePin'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:65: undefined reference to `HAL_GPIO_WritePin'
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o:H:/STM32_Drivers/stm32_drivers/Debug/../Src/main.c:67: more undefined references to `HAL_GPIO_WritePin' follow
-collect2.exe: error: ld returned 1 exit status
-make: *** [makefile:63: stm32_drivers.elf] Error 1
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
-23:16:11 **** Clean-only build of configuration Debug for project stm32_drivers ****
-make -j16 clean 
-rm -rf ./Startup/startup_stm32f411vetx.d ./Startup/startup_stm32f411vetx.o
-rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
-rm -rf default.size.stdout stm32_drivers.elf stm32_drivers.list stm32_drivers.map
- 
-23:16:12 **** Incremental Build of configuration Debug for project stm32_drivers ****
-make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f411vetx.d" -MT"Startup/startup_stm32f411vetx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f411vetx.o" "../Startup/startup_stm32f411vetx.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc -o "stm32_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\stm32_drivers\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: stm32_drivers.elf
- 
-arm-none-eabi-size  stm32_drivers.elf 
-arm-none-eabi-objdump -h -S stm32_drivers.elf  > "stm32_drivers.list"
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	stm32_drivers.elf
-Finished building: default.size.stdout
- 
-Finished building: stm32_drivers.list
- 
-23:16:13 **** Clean-only build of configuration Debug for project stm32f4xx_drivers ****
-make -j16 clean 
-rm -rf ./src/001led_toggle.cyclo ./src/001led_toggle.d ./src/001led_toggle.o ./src/001led_toggle.su
-rm -rf ./drivers/src/stm32f407xx_gpio_driver.cyclo ./drivers/src/stm32f407xx_gpio_driver.d ./drivers/src/stm32f407xx_gpio_driver.o ./drivers/src/stm32f407xx_gpio_driver.su ./drivers/src/stm32f407xx_i2c_driver.cyclo ./drivers/src/stm32f407xx_i2c_driver.d ./drivers/src/stm32f407xx_i2c_driver.o ./drivers/src/stm32f407xx_i2c_driver.su ./drivers/src/stm32f407xx_rcc_driver.cyclo ./drivers/src/stm32f407xx_rcc_driver.d ./drivers/src/stm32f407xx_rcc_driver.o ./drivers/src/stm32f407xx_rcc_driver.su ./drivers/src/stm32f407xx_spi_driver.cyclo ./drivers/src/stm32f407xx_spi_driver.d ./drivers/src/stm32f407xx_spi_driver.o ./drivers/src/stm32f407xx_spi_driver.su ./drivers/src/stm32f407xx_usart_driver.cyclo ./drivers/src/stm32f407xx_usart_driver.d ./drivers/src/stm32f407xx_usart_driver.o ./drivers/src/stm32f407xx_usart_driver.su
-rm -rf ./bsp/ds1307.cyclo ./bsp/ds1307.d ./bsp/ds1307.o ./bsp/ds1307.su ./bsp/lcd.cyclo ./bsp/lcd.d ./bsp/lcd.o ./bsp/lcd.su
-rm -rf ./autogen/startup_stm32f407vgtx.d ./autogen/startup_stm32f407vgtx.o ./autogen/syscalls.cyclo ./autogen/syscalls.d ./autogen/syscalls.o ./autogen/syscalls.su ./autogen/sysmem.cyclo ./autogen/sysmem.d ./autogen/sysmem.o ./autogen/sysmem.su
-rm -rf default.size.stdout stm32f4xx_drivers.elf stm32f4xx_drivers.list stm32f4xx_drivers.map
- 
-23:16:13 **** Build of configuration Debug for project stm32f4xx_drivers ****
-make -j16 all 
-arm-none-eabi-gcc "../src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/001led_toggle.d" -MT"src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/001led_toggle.o"
-arm-none-eabi-gcc "../drivers/src/stm32f407xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/src/stm32f407xx_gpio_driver.d" -MT"drivers/src/stm32f407xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/src/stm32f407xx_gpio_driver.o"
-arm-none-eabi-gcc "../drivers/src/stm32f407xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/src/stm32f407xx_i2c_driver.d" -MT"drivers/src/stm32f407xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/src/stm32f407xx_i2c_driver.o"
-arm-none-eabi-gcc "../drivers/src/stm32f407xx_rcc_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/src/stm32f407xx_rcc_driver.d" -MT"drivers/src/stm32f407xx_rcc_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/src/stm32f407xx_rcc_driver.o"
-arm-none-eabi-gcc "../drivers/src/stm32f407xx_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/src/stm32f407xx_spi_driver.d" -MT"drivers/src/stm32f407xx_spi_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/src/stm32f407xx_spi_driver.o"
-arm-none-eabi-gcc "../drivers/src/stm32f407xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/src/stm32f407xx_usart_driver.d" -MT"drivers/src/stm32f407xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/src/stm32f407xx_usart_driver.o"
-arm-none-eabi-gcc "../bsp/ds1307.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"bsp/ds1307.d" -MT"bsp/ds1307.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "bsp/ds1307.o"
-arm-none-eabi-gcc "../bsp/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"bsp/lcd.d" -MT"bsp/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "bsp/lcd.o"
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"autogen/startup_stm32f407vgtx.d" -MT"autogen/startup_stm32f407vgtx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "autogen/startup_stm32f407vgtx.o" "../autogen/startup_stm32f407vgtx.s"
-arm-none-eabi-gcc "../autogen/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"autogen/syscalls.d" -MT"autogen/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "autogen/syscalls.o"
-arm-none-eabi-gcc "../autogen/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/bsp" -I"H:/Repository/MasteringMCU/Resources/Source_code/Workspace/stm32f4xx_drivers/drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"autogen/sysmem.d" -MT"autogen/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "autogen/sysmem.o"
-../drivers/src/stm32f407xx_usart_driver.c: In function 'USART_IRQHandling':
-../drivers/src/stm32f407xx_usart_driver.c:619:33: warning: variable 'temp3' set but not used [-Wunused-but-set-variable]
-  619 |         uint32_t temp1 , temp2, temp3;
-      |                                 ^~~~~
-arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\Repository\MasteringMCU\Resources\Source_code\Workspace\stm32f4xx_drivers\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: stm32f4xx_drivers.elf has a LOAD segment with RWX permissions
-Finished building target: stm32f4xx_drivers.elf
- 
-arm-none-eabi-size  stm32f4xx_drivers.elf 
-arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
-   text	   data	    bss	    dec	    hex	filename
-   1884	      8	   1568	   3460	    d84	stm32f4xx_drivers.elf
-Finished building: default.size.stdout
- 
-Finished building: stm32f4xx_drivers.list
- 
-23:18:40 **** Incremental Build of configuration Debug for project stm32_drivers ****
-make -j16 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "stm32_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\stm32_drivers\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: stm32_drivers.elf
- 
-arm-none-eabi-size  stm32_drivers.elf 
-arm-none-eabi-objdump -h -S stm32_drivers.elf  > "stm32_drivers.list"
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   1568	   3256	    cb8	stm32_drivers.elf
-Finished building: default.size.stdout
- 
-Finished building: stm32_drivers.list
- 
-23:18:52 **** Incremental Build of configuration Debug for project stm32_drivers ****
-make -j16 all 
-arm-none-eabi-size  stm32_drivers.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   1568	   3256	    cb8	stm32_drivers.elf
-Finished building: default.size.stdout
- 
-23:47:23 **** Incremental Build of configuration Debug for project stm32_drivers ****
-make -j16 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-../Src/main.c: In function 'GPIOD_Configure':
-../Src/main.c:55:23: error: incompatible type for argument 1 of 'HAL_GPIO_Init'
-   55 |         HAL_GPIO_Init(&BTN);
-      |                       ^~~~
-      |                       |
-      |                       GPIO_Handle_t *
-In file included from H:/STM32_Drivers/stm32_drivers/drivers/Inc/stm32f411xx.h:147,
-                 from ../Src/main.c:19:
-H:/STM32_Drivers/stm32_drivers/drivers/Inc/stm32f411xx_gpio_driver.h:78:53: note: expected 'GPIO_Handle_t' but argument is of type 'GPIO_Handle_t *'
-   78 | void                    HAL_GPIO_Init(GPIO_Handle_t GPIOHandle);
-      |                                       ~~~~~~~~~~~~~~^~~~~~~~~~
-make: *** [Src/subdir.mk:25: Src/main.o] Error 1
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
-23:47:34 **** Incremental Build of configuration Debug for project stm32_drivers ****
-make -j16 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "stm32_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\stm32_drivers\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: stm32_drivers.elf
- 
-arm-none-eabi-size  stm32_drivers.elf 
-arm-none-eabi-objdump -h -S stm32_drivers.elf  > "stm32_drivers.list"
-   text	   data	    bss	    dec	    hex	filename
-   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
-Finished building: default.size.stdout
- 
-Finished building: stm32_drivers.list
- 
-23:47:38 **** Incremental Build of configuration Debug for project stm32_drivers ****
+18:51:21 **** Incremental Build of configuration Debug for project stm32_drivers ****
 make -j16 all 
 arm-none-eabi-size  stm32_drivers.elf 
    text	   data	    bss	    dec	    hex	filename
    1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
 Finished building: default.size.stdout
  
-02:14:05 **** Build of configuration Debug for project stm32_drivers ****
+18:54:44 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
-arm-none-eabi-size  stm32_drivers.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
-Finished building: default.size.stdout
- 
-22:39:06 **** Build of configuration Debug for project stm32_drivers ****
-make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_spi_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/stm32_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_spi_driver.d" -MT"drivers/Src/stm32f411xx_spi_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_spi_driver.o"
-arm-none-eabi-gcc -o "stm32_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\stm32_drivers\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: stm32_drivers.elf
- 
-arm-none-eabi-size  stm32_drivers.elf 
-arm-none-eabi-objdump -h -S stm32_drivers.elf  > "stm32_drivers.list"
-   text	   data	    bss	    dec	    hex	filename
-   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
-Finished building: default.size.stdout
- 
-Finished building: stm32_drivers.list
- 
-00:46:40 **** Build of configuration Debug for project stm32_drivers ****
-make -j16 all 
-arm-none-eabi-size  stm32_drivers.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
-Finished building: default.size.stdout
- 
-00:50:51 **** Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-size  GPIO_Driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
-Finished building: default.size.stdout
- 
-00:50:51 **** Incremental Build of configuration Debug for project stm32_drivers ****
-make -j16 all 
-arm-none-eabi-size  stm32_drivers.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
-Finished building: default.size.stdout
- 
-00:53:35 **** Clean-only build of configuration Debug for project GPIO_Driver ****
-make -j16 clean 
-rm -rf ./drivers/Src/stm32f411xx_gpio_driver.cyclo ./drivers/Src/stm32f411xx_gpio_driver.d ./drivers/Src/stm32f411xx_gpio_driver.o ./drivers/Src/stm32f411xx_gpio_driver.su
-rm -rf ./Startup/startup_stm32f411vetx.d ./Startup/startup_stm32f411vetx.o
-rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
-rm -rf GPIO_Driver.elf GPIO_Driver.list GPIO_Driver.map default.size.stdout
- 
-00:53:35 **** Incremental Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f411vetx.d" -MT"Startup/startup_stm32f411vetx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f411vetx.o" "../Startup/startup_stm32f411vetx.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
 arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: GPIO_Driver.elf
  
 arm-none-eabi-size  GPIO_Driver.elf 
 arm-none-eabi-objdump -h -S GPIO_Driver.elf  > "GPIO_Driver.list"
    text	   data	    bss	    dec	    hex	filename
-   1748	      0	   1568	   3316	    cf4	GPIO_Driver.elf
+   1424	      0	   1568	   2992	    bb0	GPIO_Driver.elf
 Finished building: default.size.stdout
  
 Finished building: GPIO_Driver.list
  
-00:53:37 **** Incremental Build of configuration Debug for project stm32_drivers ****
+18:54:44 **** Incremental Build of configuration Debug for project stm32_drivers ****
 make -j16 all 
 arm-none-eabi-size  stm32_drivers.elf 
    text	   data	    bss	    dec	    hex	filename
    1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
 Finished building: default.size.stdout
  
-02:00:39 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:37:47 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
-arm-none-eabi-gcc "../Src/1_Led_Toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/1_Led_Toggle.d" -MT"Src/1_Led_Toggle.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/1_Led_Toggle.o"
-arm-none-eabi-gcc "../Src/2_Led_Button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/2_Led_Button.d" -MT"Src/2_Led_Button.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/2_Led_Button.o"
-arm-none-eabi-gcc "../Src/3_Led_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Led_Button_EXTI.d" -MT"Src/3_Led_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Led_Button_EXTI.o"
-arm-none-eabi-gcc "../Src/4_GPIO_Freq.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/4_GPIO_Freq.d" -MT"Src/4_GPIO_Freq.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/4_GPIO_Freq.o"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
-H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/main.c:21: multiple definition of `main'; ./Src/1_Led_Toggle.o:H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/1_Led_Toggle.c:21: first defined here
-collect2.exe: error: ld returned 1 exit status
-make: *** [makefile:64: GPIO_Driver.elf] Error 1
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
+../Src/3_Button_EXTI.c: In function 'GPIO_IRQInterruptConfig':
+../Src/3_Button_EXTI.c:263:26: error: 'NVIC_ISER0' undeclared (first use in this function); did you mean 'NVIC_ICER0'?
+  263 |                         *NVIC_ISER0 |= ( 1 << IRQNumber );
+      |                          ^~~~~~~~~~
+      |                          NVIC_ICER0
+../Src/3_Button_EXTI.c:263:26: note: each undeclared identifier is reported only once for each function it appears in
+../Src/3_Button_EXTI.c:268:26: error: 'NVIC_ISER1' undeclared (first use in this function); did you mean 'NVIC_ICER1'?
+  268 |                         *NVIC_ISER1 |= ( 1 << (IRQNumber % 32) );
+      |                          ^~~~~~~~~~
+      |                          NVIC_ICER1
+../Src/3_Button_EXTI.c:273:26: error: 'NVIC_ISER2' undeclared (first use in this function); did you mean 'NVIC_ICER2'?
+  273 |                         *NVIC_ISER2 |= ( 1 << (IRQNumber % 64) );
+      |                          ^~~~~~~~~~
+      |                          NVIC_ICER2
+../Src/3_Button_EXTI.c: In function 'EXTI0_IRQHandler':
+../Src/3_Button_EXTI.c:296:5: warning: implicit declaration of function 'GPIO_IRQHandling' [-Wimplicit-function-declaration]
+  296 |     GPIO_IRQHandling(GPIO_PIN_0);
+      |     ^~~~~~~~~~~~~~~~
+../Src/3_Button_EXTI.c: In function 'main':
+../Src/3_Button_EXTI.c:322:5: warning: implicit declaration of function 'GPIO_IRQPriorityConfig' [-Wimplicit-function-declaration]
+  322 |     GPIO_IRQPriorityConfig(6, 0);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:25: Src/3_Button_EXTI.o] Error 1
 "make -j16 all" terminated with exit code 2. Build might be incomplete.
-02:00:40 **** Incremental Build of configuration Debug for project stm32_drivers ****
+00:37:48 **** Incremental Build of configuration Debug for project stm32_drivers ****
 make -j16 all 
 arm-none-eabi-size  stm32_drivers.elf 
    text	   data	    bss	    dec	    hex	filename
    1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
 Finished building: default.size.stdout
  
-02:01:34 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:37:53 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
-arm-none-eabi-gcc "../Src/1_Led_Toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/1_Led_Toggle.d" -MT"Src/1_Led_Toggle.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/1_Led_Toggle.o"
-arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
-H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/main.c:21: multiple definition of `main'; ./Src/1_Led_Toggle.o:H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/1_Led_Toggle.c:21: first defined here
-collect2.exe: error: ld returned 1 exit status
-make: *** [makefile:64: GPIO_Driver.elf] Error 1
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
+../Src/3_Button_EXTI.c: In function 'GPIO_IRQInterruptConfig':
+../Src/3_Button_EXTI.c:263:26: error: 'NVIC_ISER0' undeclared (first use in this function); did you mean 'NVIC_ICER0'?
+  263 |                         *NVIC_ISER0 |= ( 1 << IRQNumber );
+      |                          ^~~~~~~~~~
+      |                          NVIC_ICER0
+../Src/3_Button_EXTI.c:263:26: note: each undeclared identifier is reported only once for each function it appears in
+../Src/3_Button_EXTI.c:268:26: error: 'NVIC_ISER1' undeclared (first use in this function); did you mean 'NVIC_ICER1'?
+  268 |                         *NVIC_ISER1 |= ( 1 << (IRQNumber % 32) );
+      |                          ^~~~~~~~~~
+      |                          NVIC_ICER1
+../Src/3_Button_EXTI.c:273:26: error: 'NVIC_ISER2' undeclared (first use in this function); did you mean 'NVIC_ICER2'?
+  273 |                         *NVIC_ISER2 |= ( 1 << (IRQNumber % 64) );
+      |                          ^~~~~~~~~~
+      |                          NVIC_ICER2
+../Src/3_Button_EXTI.c: In function 'EXTI0_IRQHandler':
+../Src/3_Button_EXTI.c:296:5: warning: implicit declaration of function 'GPIO_IRQHandling' [-Wimplicit-function-declaration]
+  296 |     GPIO_IRQHandling(GPIO_PIN_0);
+      |     ^~~~~~~~~~~~~~~~
+../Src/3_Button_EXTI.c: In function 'main':
+../Src/3_Button_EXTI.c:322:5: warning: implicit declaration of function 'GPIO_IRQPriorityConfig' [-Wimplicit-function-declaration]
+  322 |     GPIO_IRQPriorityConfig(6, 0);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:25: Src/3_Button_EXTI.o] Error 1
 "make -j16 all" terminated with exit code 2. Build might be incomplete.
-02:01:35 **** Incremental Build of configuration Debug for project stm32_drivers ****
+00:39:30 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
+../Src/3_Button_EXTI.c: In function 'EXTI0_IRQHandler':
+../Src/3_Button_EXTI.c:301:5: warning: implicit declaration of function 'GPIO_IRQHandling' [-Wimplicit-function-declaration]
+  301 |     GPIO_IRQHandling(GPIO_PIN_0);
+      |     ^~~~~~~~~~~~~~~~
+../Src/3_Button_EXTI.c: In function 'main':
+../Src/3_Button_EXTI.c:327:5: warning: implicit declaration of function 'GPIO_IRQPriorityConfig' [-Wimplicit-function-declaration]
+  327 |     GPIO_IRQPriorityConfig(6, 0);
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/3_Button_EXTI.o: in function `EXTI0_IRQHandler':
+H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/3_Button_EXTI.c:301: undefined reference to `GPIO_IRQHandling'
+C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/3_Button_EXTI.o: in function `main':
+H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/3_Button_EXTI.c:327: undefined reference to `GPIO_IRQPriorityConfig'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: GPIO_Driver.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+00:39:31 **** Incremental Build of configuration Debug for project stm32_drivers ****
 make -j16 all 
 arm-none-eabi-size  stm32_drivers.elf 
    text	   data	    bss	    dec	    hex	filename
    1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
 Finished building: default.size.stdout
  
-02:01:38 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:39:35 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
 arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
-H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/main.c:21: multiple definition of `main'; ./Src/1_Led_Toggle.o:H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/1_Led_Toggle.c:21: first defined here
+C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/3_Button_EXTI.o: in function `EXTI0_IRQHandler':
+H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/3_Button_EXTI.c:301: undefined reference to `GPIO_IRQHandling'
+C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/3_Button_EXTI.o: in function `main':
+H:/STM32_Drivers/Drivers/GPIO_Driver/Debug/../Src/3_Button_EXTI.c:327: undefined reference to `GPIO_IRQPriorityConfig'
 collect2.exe: error: ld returned 1 exit status
-make: *** [makefile:64: GPIO_Driver.elf] Error 1
+make: *** [makefile:63: GPIO_Driver.elf] Error 1
 "make -j16 all" terminated with exit code 2. Build might be incomplete.
-02:16:10 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:42:11 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
-arm-none-eabi-gcc "../Src/1_Led_Toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/1_Led_Toggle.d" -MT"Src/1_Led_Toggle.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/1_Led_Toggle.o"
-arm-none-eabi-gcc "../Src/2_Led_Button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/2_Led_Button.d" -MT"Src/2_Led_Button.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/2_Led_Button.o"
-arm-none-eabi-gcc "../Src/3_Led_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Led_Button_EXTI.d" -MT"Src/3_Led_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Led_Button_EXTI.o"
-arm-none-eabi-gcc "../Src/4_GPIO_Freq.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/4_GPIO_Freq.d" -MT"Src/4_GPIO_Freq.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/4_GPIO_Freq.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
+../Src/3_Button_EXTI.c: In function 'GPIO_IRQPriorityConfig':
+../Src/3_Button_EXTI.c:306:60: error: 'NO_PR_BITS_IMPLEMENTED' undeclared (first use in this function)
+  306 |         uint8_t shift_amount = ( 8 * iprx_section) + ( 8 - NO_PR_BITS_IMPLEMENTED) ;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~~~
+../Src/3_Button_EXTI.c:306:60: note: each undeclared identifier is reported only once for each function it appears in
+../Src/3_Button_EXTI.c:308:13: error: 'NVIC_PR_BASE_ADDR' undeclared (first use in this function)
+  308 |         *(  NVIC_PR_BASE_ADDR + iprx ) |=  ( IRQPriority << shift_amount );
+      |             ^~~~~~~~~~~~~~~~~
+../Src/3_Button_EXTI.c: In function 'EXTI0_IRQHandler':
+../Src/3_Button_EXTI.c:313:16: error: 'EXTI_TypeDef' has no member named 'PR'
+  313 |         if(EXTI->PR & ( 1 << GPIO_PIN_0)){
+      |                ^~
+../Src/3_Button_EXTI.c:314:21: error: 'EXTI_TypeDef' has no member named 'PR'
+  314 |                 EXTI->PR |= ( 1 << GPIO_PIN_0);
+      |                     ^~
+make: *** [Src/subdir.mk:25: Src/3_Button_EXTI.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+00:42:11 **** Incremental Build of configuration Debug for project stm32_drivers ****
+make -j16 all 
+arm-none-eabi-size  stm32_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
+Finished building: default.size.stdout
+ 
+00:42:45 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
+../Src/3_Button_EXTI.c: In function 'EXTI0_IRQHandler':
+../Src/3_Button_EXTI.c:313:16: error: 'EXTI_TypeDef' has no member named 'PR'
+  313 |         if(EXTI->PR & ( 1 << GPIO_PIN_0)){
+      |                ^~
+../Src/3_Button_EXTI.c:314:21: error: 'EXTI_TypeDef' has no member named 'PR'
+  314 |                 EXTI->PR |= ( 1 << GPIO_PIN_0);
+      |                     ^~
+make: *** [Src/subdir.mk:25: Src/3_Button_EXTI.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+00:42:45 **** Incremental Build of configuration Debug for project stm32_drivers ****
+make -j16 all 
+arm-none-eabi-size  stm32_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
+Finished building: default.size.stdout
+ 
+00:43:07 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
 arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: GPIO_Driver.elf
  
 arm-none-eabi-size  GPIO_Driver.elf 
 arm-none-eabi-objdump -h -S GPIO_Driver.elf  > "GPIO_Driver.list"
    text	   data	    bss	    dec	    hex	filename
-   1532	      0	   1568	   3100	    c1c	GPIO_Driver.elf
+   1856	      0	   1568	   3424	    d60	GPIO_Driver.elf
 Finished building: default.size.stdout
  
 Finished building: GPIO_Driver.list
  
-02:16:10 **** Incremental Build of configuration Debug for project stm32_drivers ****
+00:43:07 **** Incremental Build of configuration Debug for project stm32_drivers ****
 make -j16 all 
 arm-none-eabi-size  stm32_drivers.elf 
    text	   data	    bss	    dec	    hex	filename
    1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
 Finished building: default.size.stdout
  
-02:16:13 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:43:11 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
 arm-none-eabi-size  GPIO_Driver.elf 
    text	   data	    bss	    dec	    hex	filename
-   1532	      0	   1568	   3100	    c1c	GPIO_Driver.elf
+   1856	      0	   1568	   3424	    d60	GPIO_Driver.elf
 Finished building: default.size.stdout
  
-02:34:13 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:50:41 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
-arm-none-eabi-gcc "../Src/1_Led_Toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/1_Led_Toggle.d" -MT"Src/1_Led_Toggle.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/1_Led_Toggle.o"
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
 arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: GPIO_Driver.elf
  
 arm-none-eabi-size  GPIO_Driver.elf 
 arm-none-eabi-objdump -h -S GPIO_Driver.elf  > "GPIO_Driver.list"
    text	   data	    bss	    dec	    hex	filename
-   1524	      0	   1568	   3092	    c14	GPIO_Driver.elf
+   1888	      0	   1568	   3456	    d80	GPIO_Driver.elf
 Finished building: default.size.stdout
  
 Finished building: GPIO_Driver.list
  
-02:34:14 **** Incremental Build of configuration Debug for project stm32_drivers ****
+00:50:42 **** Incremental Build of configuration Debug for project stm32_drivers ****
 make -j16 all 
 arm-none-eabi-size  stm32_drivers.elf 
    text	   data	    bss	    dec	    hex	filename
    1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
 Finished building: default.size.stdout
  
-02:34:17 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:50:44 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
 arm-none-eabi-size  GPIO_Driver.elf 
    text	   data	    bss	    dec	    hex	filename
-   1524	      0	   1568	   3092	    c14	GPIO_Driver.elf
+   1888	      0	   1568	   3456	    d80	GPIO_Driver.elf
 Finished building: default.size.stdout
  
-02:36:33 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:51:18 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
 arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: GPIO_Driver.elf
  
 arm-none-eabi-size  GPIO_Driver.elf 
 arm-none-eabi-objdump -h -S GPIO_Driver.elf  > "GPIO_Driver.list"
    text	   data	    bss	    dec	    hex	filename
-   1524	      0	   1568	   3092	    c14	GPIO_Driver.elf
+   1888	      0	   1568	   3456	    d80	GPIO_Driver.elf
 Finished building: default.size.stdout
  
 Finished building: GPIO_Driver.list
  
-02:36:34 **** Incremental Build of configuration Debug for project stm32_drivers ****
+00:51:19 **** Incremental Build of configuration Debug for project stm32_drivers ****
 make -j16 all 
 arm-none-eabi-size  stm32_drivers.elf 
    text	   data	    bss	    dec	    hex	filename
    1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
 Finished building: default.size.stdout
  
-02:36:36 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:51:21 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
 arm-none-eabi-size  GPIO_Driver.elf 
    text	   data	    bss	    dec	    hex	filename
-   1524	      0	   1568	   3092	    c14	GPIO_Driver.elf
+   1888	      0	   1568	   3456	    d80	GPIO_Driver.elf
 Finished building: default.size.stdout
  
-02:37:05 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+00:51:41 **** Incremental Build of configuration Debug for project GPIO_Driver ****
 make -j16 all 
 arm-none-eabi-size  GPIO_Driver.elf 
    text	   data	    bss	    dec	    hex	filename
-   1524	      0	   1568	   3092	    c14	GPIO_Driver.elf
+   1888	      0	   1568	   3456	    d80	GPIO_Driver.elf
 Finished building: default.size.stdout
  
-02:12:24 **** Build of configuration Debug for project GPIO_Driver ****
-make -j16 all 
-arm-none-eabi-gcc "../drivers/Src/stm32f411xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f411xx_gpio_driver.d" -MT"drivers/Src/stm32f411xx_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "drivers/Src/stm32f411xx_gpio_driver.o"
-arm-none-eabi-gcc "../Src/1_Led_Toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"H:/STM32_Drivers/Drivers/GPIO_Driver/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/1_Led_Toggle.d" -MT"Src/1_Led_Toggle.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/1_Led_Toggle.o"
-../Src/1_Led_Toggle.c: In function 'main':
-../Src/1_Led_Toggle.c:22:6: error: unknown type name 'GPIO_Handle_t'
-   22 |      GPIO_Handle_t LED_0;
-      |      ^~~~~~~~~~~~~
-../Src/1_Led_Toggle.c:23:11: error: request for member 'GPIOx' in something not a structure or union
-   23 |      LED_0.GPIOx = GPIOD;
-      |           ^
-../Src/1_Led_Toggle.c:24:11: error: request for member 'GPIO_PinConfig' in something not a structure or union
-   24 |      LED_0.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_15;
-      |           ^
-../Src/1_Led_Toggle.c:24:44: error: 'GPIO_PIN_15' undeclared (first use in this function)
-   24 |      LED_0.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_15;
-      |                                            ^~~~~~~~~~~
-../Src/1_Led_Toggle.c:24:44: note: each undeclared identifier is reported only once for each function it appears in
-../Src/1_Led_Toggle.c:25:11: error: request for member 'GPIO_PinConfig' in something not a structure or union
-   25 |      LED_0.GPIO_PinConfig.GPIO_PinMode = GPIO_OUTPUT_MODE;
-      |           ^
-../Src/1_Led_Toggle.c:25:42: error: 'GPIO_OUTPUT_MODE' undeclared (first use in this function)
-   25 |      LED_0.GPIO_PinConfig.GPIO_PinMode = GPIO_OUTPUT_MODE;
-      |                                          ^~~~~~~~~~~~~~~~
-../Src/1_Led_Toggle.c:26:11: error: request for member 'GPIO_PinConfig' in something not a structure or union
-   26 |      LED_0.GPIO_PinConfig.GPIO_PinOPType = 0;
-      |           ^
-../Src/1_Led_Toggle.c:28:6: warning: implicit declaration of function 'HAL_GPIO_Init' [-Wimplicit-function-declaration]
-   28 |      HAL_GPIO_Init(LED_0);
-      |      ^~~~~~~~~~~~~
-../Src/1_Led_Toggle.c:31:10: warning: implicit declaration of function 'HAL_GPIO_TogglePin' [-Wimplicit-function-declaration]
-   31 |          HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
-      |          ^~~~~~~~~~~~~~~~~~
-make: *** [Src/subdir.mk:34: Src/1_Led_Toggle.o] Error 1
-make: *** Waiting for unfinished jobs....
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
-02:12:26 **** Build of configuration Debug for project stm32_drivers ****
+00:51:42 **** Incremental Build of configuration Debug for project stm32_drivers ****
 make -j16 all 
 arm-none-eabi-size  stm32_drivers.elf 
    text	   data	    bss	    dec	    hex	filename
    1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
+Finished building: default.size.stdout
+ 
+00:51:44 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+make -j16 all 
+arm-none-eabi-size  GPIO_Driver.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1888	      0	   1568	   3456	    d80	GPIO_Driver.elf
+Finished building: default.size.stdout
+ 
+00:52:26 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/3_Button_EXTI.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/3_Button_EXTI.d" -MT"Src/3_Button_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/3_Button_EXTI.o"
+arm-none-eabi-gcc -o "GPIO_Driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"H:\STM32_Drivers\Drivers\GPIO_Driver\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_Driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: GPIO_Driver.elf
+ 
+arm-none-eabi-size  GPIO_Driver.elf 
+arm-none-eabi-objdump -h -S GPIO_Driver.elf  > "GPIO_Driver.list"
+   text	   data	    bss	    dec	    hex	filename
+   1888	      0	   1568	   3456	    d80	GPIO_Driver.elf
+Finished building: default.size.stdout
+ 
+Finished building: GPIO_Driver.list
+ 
+00:52:26 **** Incremental Build of configuration Debug for project stm32_drivers ****
+make -j16 all 
+arm-none-eabi-size  stm32_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1820	      0	   1568	   3388	    d3c	stm32_drivers.elf
+Finished building: default.size.stdout
+ 
+00:52:31 **** Incremental Build of configuration Debug for project GPIO_Driver ****
+make -j16 all 
+arm-none-eabi-size  GPIO_Driver.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1888	      0	   1568	   3456	    d80	GPIO_Driver.elf
 Finished building: default.size.stdout
  

@@ -1,4 +1,0 @@
-"./Src/2_Button_Toggle_LED.o"
-"./Src/syscalls.o"
-"./Src/sysmem.o"
-"./Startup/startup_stm32f411vetx.o"
