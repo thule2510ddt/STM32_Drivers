@@ -10,9 +10,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
   2 .rodata       00000000  08000714  0800071c  0000171c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   3 .ARM.extab    00000000  08000714  08000714  0000171c  2**0
-                  CONTENTS
+                  CONTENTS, READONLY
   4 .ARM          00000000  08000714  08000714  0000171c  2**0
-                  CONTENTS
+                  CONTENTS, READONLY
   5 .preinit_array 00000000  08000714  0800071c  0000171c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   6 .init_array   00000004  08000714  08000714  00001714  2**2
@@ -35,17 +35,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_rnglists 00000080  00000000  00000000  000024c0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  000013bb  00000000  00000000  00002540  2**0
+ 16 .debug_macro  0000175a  00000000  00000000  00002540  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00000e49  00000000  00000000  000038fb  2**0
+ 17 .debug_line   00000e1a  00000000  00000000  00003c9a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00004e84  00000000  00000000  00004744  2**0
+ 18 .debug_str    00005754  00000000  00000000  00004ab4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000095c8  2**0
+ 19 .comment      00000043  00000000  00000000  0000a208  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000021c  00000000  00000000  0000960c  2**2
+ 20 .debug_frame  0000021c  00000000  00000000  0000a24c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000048  00000000  00000000  00009828  2**0
+ 21 .debug_line_str 00000048  00000000  00000000  0000a468  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -79,11 +79,11 @@ Disassembly of section .text:
  80001d4:	080006fc 	.word	0x080006fc
 
 080001d8 <GPIOD_Configure>:
- *
- ******************************************************************************
- */
 
 #include "stm32f411xx.h"
+
+
+
 void GPIOD_Configure(){
  80001d8:	b580      	push	{r7, lr}
  80001da:	b090      	sub	sp, #64	@ 0x40
